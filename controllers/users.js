@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const User = require('../models/user.js');
-
+//get users
 router.get('/', async (req, res) => {
     try {
         const users = await User.find();
