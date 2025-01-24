@@ -24,5 +24,5 @@ router.get('/:userId', async (req, res) => {
       res.redirect('/');
     }
   });
-iy
+
   module.exports = router;
