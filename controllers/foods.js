@@ -94,4 +94,44 @@ router.get('/:itemId', async (req,res) => {
   
 });
 
+//update
+router.put('/:itemId', async (req, res) => {
+    try {
+        const userId = req.session.user._id
+        const { itemId } = req.params;
+        const { name, description } = req.body;
+        const user = await User.findById(userId)
+        const foodItem = user.pantry.find(food => food._id.toString() === itemId)
+        // Look up the user by ID
+      ;
+foodItem.name = name
+foodItem.description = description
+await user.save()
+        // Redirect back to the pantry index view
+     res.redirect(`users/${userId}/foods`)
+    } catch (err) {
+        console.error(err);
+        res.redirect('/');
+    }
+});
+//edit
+router.get('/:itemId/edit', async (req, res) => {
+    try {
+      
+        const userId = req.session.user._id
+        const { itemId } = req.params;
+        const user = await User.findById(userId);
+    console.log(itemId)
+        const foodItem = user.pantry.find(food => food._id.toString() === itemId)
+        console.log(foodItem)
+    res.render('foods/edit',{foodItem,user})
+
+        
+    } catch (err) {
+        console.error(err);
+        res.redirect('/');
+    }
+});
+
+
 module.exports = router;
