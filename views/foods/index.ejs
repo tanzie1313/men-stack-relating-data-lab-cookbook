@@ -12,8 +12,10 @@
         <h1>Welcome to my Pantry</h1>
         <a href="/users/<%= id%>/foods">View my Pantry</a>
         
-         
-        <a href="/users/<%= id %>/foods/new">Create New Food</a>
+        
+        <a href="/users/<%= id %>/foods/new">Create New Pantry item</a>
+        <a href="/">Back to Home</a>
+
         <h1 class ="center-align">List of Pantries</h1>
        
         <div class="container">
@@ -23,6 +25,7 @@
                 <a href="/users/<%= user._id %>/foods/<%= food._id %>"> <%= food.name %></a>
               </li>
               <% })%>
+            
           </ul>
         </div>
       
